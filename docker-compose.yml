@@ -1,0 +1,37 @@
+version: '3.7'
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.0.1
+    container_name: delivery-service.zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+
+  kafka:
+    image: confluentinc/cp-kafka:7.0.1
+    container_name: delivery-service.kafka
+    ports:
+      - "9092:9092"
+      - "9094:9094"
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: delivery-service.zookeeper:2181
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_LISTENERS: INTERNAL://0.0.0.0:9094,OUTSIDE://0.0.0.0:9092
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://delivery-service.kafka:9094,OUTSIDE://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,OUTSIDE:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+      ADV_HOST: delivery-service.kafka
+
+  mongo:
+    image: mongo:5.0.6
+    container_name: delivery-service.mongo
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: delivery-service
+      MONGO_INITDB_ROOT_USERNAME: localUser
+      MONGO_INITDB_ROOT_PASSWORD: localPwd
