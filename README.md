@@ -1,4 +1,4 @@
-# Delivery Project - README
+# Delivery Service
 
 ## Overview
 This project implements a delivery management system as outlined in the provided kata. The system enables clients to select delivery modes, reserve delivery time slots, and ensures data integrity using modern architectural principles and tools.
@@ -20,6 +20,7 @@ This project implements a delivery management system as outlined in the provided
 - **Kafka Producer** for event-driven architecture to publish delivery events.
 - **MongoDB** for persistent data storage.
 - **Test-Driven Development (TDD)** for unit testing.
+- **Integration Test** ensuring the functionality of the main end-to-end flow
 - **Hexagonal Design** for clean and maintainable architecture.
 - **Docker Compose** to simplify project environment setup.
 - **Dockerfile** to facilitate containerization and future deployments.
