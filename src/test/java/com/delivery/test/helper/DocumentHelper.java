@@ -17,7 +17,7 @@ public class DocumentHelper {
   public static OrderDocument getRandomOrderDocument(DeliveryStatusDocument deliveryStatus) {
     return OrderDocument.builder()
         .orderId(TestHelper.getRandomId())
-        .deliveryStatus(TestHelper.getRandom(DeliveryStatusDocument.class))
+        .deliveryStatus(deliveryStatus)
         .build();
   }
 
