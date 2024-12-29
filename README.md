@@ -10,8 +10,7 @@ This project implements a delivery management system as outlined in the provided
    - Delivery time slots are displayed based on the selected mode.
 
 2. **Reserve Delivery Time Slot**
-   - Clients can reserve specific time slots.
-   - Features include:
+   - Clients can reserve specific time slots:
      - Marking a slot as reserved.
      - Setting order delivery status to "SCHEDULED."
      - Publishing a delivery event when a slot is reserved.
@@ -74,11 +73,11 @@ mvn test
   - Returns available delivery modes.
 
 ### Delivery Time Slots
-- **GET** `/time-slots/{mode}`
+- **GET** `/time-slots/{deliveryMode}`
   - Returns available time slots for a given mode.
 
 ### Reserve Time Slot
-- **POST** `/time-slots/reserve`
+- **POST** `/delivery`
   - Reserves a delivery time slot.
   - Request body:
     ```json
@@ -92,7 +91,6 @@ mvn test
 - Add security layers to the API.
 - Introduce CI/CD pipelines.
 - Create containerized deployment using Docker and Kubernetes.
-- Extend testing to include End-to-End (E2E) tests.
 
 ## Notes
 - The project uses Kafka for publishing events related to delivery slots. Ensure Kafka is running before starting the application.
