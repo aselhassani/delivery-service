@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: delivery-service
+  kafka:
+    bootstrap-servers: ${(KAFKA_BOOTSTRAP_SERVERS):localhost:9092}
+    producer.compression-type: gzip
+    topics:
+      delivery-event: delivery.event
+  data:
+    mongodb:
+      host: ${MONGODB_ADDRESS:localhost}
+      port: ${MONGODB_PORT:27017}
+      database: ${MONGODB_NAME:delivery-service}
+      authentication-database: ${MONGODB_AUTH_NAME:admin}
+      username: ${MONGODB_USERNAME:localUser}
+      password: ${MONGODB_PWD:localPwd}
+info:
+  maven_version: @project.version@
