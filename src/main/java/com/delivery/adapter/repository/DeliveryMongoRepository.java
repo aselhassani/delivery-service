@@ -5,11 +5,12 @@ import com.delivery.adapter.repository.document.DeliveryDocumentMongoRepository;
 import com.delivery.domain.model.Delivery;
 import com.delivery.port.repository.DeliveryRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-@Service
+@Repository
 @AllArgsConstructor
 public class DeliveryMongoRepository implements DeliveryRepository {
 
